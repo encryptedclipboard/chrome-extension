@@ -1,0 +1,216 @@
+@use "../theme.scss" as *;
+
+.welcome-screen {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  padding: 2rem;
+  overflow-y: auto;
+  user-select: text; /* Explicitly ensure text is selectable */
+
+  // Light Mode Variables
+  --bg-primary: #fff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --primary-color: #32ff7e;
+  --primary-hover: #28d96a;
+  --border-color: #dee2e6;
+
+  &.dark {
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1f2937;
+    --text-primary: #d1d5db;
+    --text-secondary: #9ca3af;
+    --primary-color: #32ff7e;
+    --primary-hover: #28d96a;
+    --border-color: #374151;
+  }
+}
+
+.welcome-content {
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.logo-container {
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+
+  .logo {
+    width: 230px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgb(50, 255, 126, 0.2));
+  }
+}
+
+.welcome-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(135deg, var(--primary-color), #00d4ff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center; // Explicitly center align
+}
+
+.welcome-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.6;
+  text-align: center; // Explicitly center align
+}
+
+.error-message {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgb(239, 68, 68, 0.1);
+  border: 1px solid rgb(239, 68, 68, 0.2);
+  border-radius: 12px;
+  corner-shape: squircle;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: #ef4444; // Red color for error
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+
+  .error-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex: 1;
+
+    svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    span {
+      line-height: 1.4;
+      font-weight: 500;
+    }
+  }
+
+  .dismiss-button {
+    background: transparent;
+    border: none;
+    color: currentcolor;
+    opacity: 0.7;
+    cursor: pointer;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+    margin-top: 1px;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.signin-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  background: var(--primary-color);
+  color: #000;
+  border: none;
+  border-radius: 12px;
+  corner-shape: squircle;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 12px rgb(50, 255, 126, 0.3);
+
+  &:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgb(50, 255, 126, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.benefits-section {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.benefits-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  corner-shape: squircle;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  text-align: left;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+  cursor: pointer !important;
+
+  &:hover {
+    border-color: $border-focus;
+    background: var(--bg-secondary);
+    transform: scale(0.95);
+  }
+
+  svg {
+    flex-shrink: 0;
+    color: var(--primary-color);
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+  }
+
+  span {
+    flex: 1;
+    line-height: 1.5;
+
+    strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+  }
+}

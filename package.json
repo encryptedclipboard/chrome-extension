@@ -1,0 +1,52 @@
+{
+  "name": "@encryptedclipboard/chrome-extension",
+  "version": "5.4.0",
+  "private": false,
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "description": "Browser extension for secure clipboard management with end-to-end encryption and cloud sync.",
+  "scripts": {
+    "build": "export NODE_ENV=production && bun run scripts/sync-version.ts && bash scripts/build.sh",
+    "build:dev": "export NODE_ENV=development && bun run scripts/sync-version.ts && bash scripts/build.sh",
+    "bld": "npm run build",
+    "verify": "bun scripts/verify-utf8.js",
+    "version:patch": "bun scripts/bump-version.ts patch",
+    "version:minor": "bun scripts/bump-version.ts minor",
+    "version:major": "bun scripts/bump-version.ts major",
+    "rollback": "bun scripts/rollback.ts",
+    "version": "bun scripts/version.ts",
+    "release": "bun scripts/release.ts",
+    "format": "prettier --write 'scripts/' 'src/'",
+    "format:check": "prettier --check 'scripts/' 'src/'",
+    "lint": "eslint .",
+    "lint:scss": "stylelint 'src/**/*.scss'",
+    "lint:all": "eslint . && stylelint 'src/**/*.scss'",
+    "check": "eslint . && stylelint 'src/**/*.scss' && prettier --check 'scripts/' 'src/'",
+    "install:dep": "bun install && (cd src/clipboard-palette && bun install) && bash scripts/install-dep.sh"
+  },
+  "dependencies": {
+    "@encryptedclipboard/crypto": "^1.2.3",
+    "@zip.js/zip.js": "^2.8.23",
+    "axios": "^1.13.6",
+    "idb": "^8.0.3",
+    "socket.io-client": "^4.8.3",
+    "turndown": "^7.2.2",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/archiver": "^7.0.0",
+    "@types/chrome": "^0.1.37",
+    "@types/turndown": "^5.0.6",
+    "@types/uuid": "^10.0.0",
+    "archiver": "^7.0.1",
+    "baseline-browser-mapping": "^2.10.33",
+    "eslint": "^10.6.0",
+    "eslint-plugin-svelte": "^3.20.0",
+    "prettier": "^3.8.5",
+    "prettier-plugin-svelte": "^4.1.1",
+    "stylelint": "^17.14.0",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "svelte-eslint-parser": "^1.8.0",
+    "typescript-eslint": "^8.62.1"
+  }
+}

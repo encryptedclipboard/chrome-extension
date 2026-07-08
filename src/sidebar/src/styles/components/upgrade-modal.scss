@@ -1,0 +1,196 @@
+@use "../theme.scss" as *;
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-out;
+  pointer-events: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  /* Force dark theme - use hardcoded dark variables */
+  background: #{$card-dark};
+  border: 1px solid #{$border-dark};
+  border-radius: 12px;
+  corner-shape: squircle;
+  width: 90%;
+  max-width: 420px;
+  box-shadow:
+    0 4px 6px -1px rgb(0, 0, 0, 0.1),
+    0 2px 4px -1px rgb(0, 0, 0, 0.06);
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+  pointer-events: auto;
+  isolation: isolate;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  color: #{$foreground-dark};
+  border-radius: 12px;
+  corner-shape: squircle;
+  transition: all 0.2s;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  :global(.icon) {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background: #{$secondary-dark};
+    color: #{$foreground-dark};
+  }
+}
+
+.modal-header {
+  padding: 24px 24px 16px;
+  text-align: center;
+  border-bottom: 1px solid #{$border-dark};
+
+  .icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
+    background: rgb(50, 255, 126, 0.1);
+    border-radius: 50%;
+    corner-shape: squircle;
+    color: #{$primary-dark};
+
+    :global(.crown-icon) {
+      width: 24px;
+      height: 24px;
+      color: currentcolor;
+    }
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #{$foreground-dark};
+  }
+}
+
+.modal-body {
+  padding: 24px;
+
+  .description {
+    margin: 0 0 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #{$muted-foreground-dark};
+    text-align: center;
+    display: block;
+
+    strong {
+      font-weight: 600;
+      color: #{$foreground-dark};
+    }
+  }
+
+  .sub-description {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+    color: #{$muted-foreground-dark};
+  }
+}
+
+.modal-footer {
+  padding: 16px 24px 24px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  align-items: center;
+  border-top: 1px solid #{$border-dark};
+
+  button {
+    flex: none;
+    padding: 6px 12px;
+    border-radius: 12px;
+    corner-shape: squircle;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+    height: 30px;
+    min-height: 30px;
+    max-height: 30px;
+
+    :global(.icon) {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .cancel-btn {
+    background: $destructive;
+    color: $destructive-foreground;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+
+  .upgrade-btn {
+    background: #{$primary-dark};
+    color: #{$primary-foreground-dark};
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+}

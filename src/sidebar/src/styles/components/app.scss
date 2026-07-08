@@ -1,0 +1,178 @@
+@use "../theme.scss" as *;
+@import "quill/dist/quill.snow.css";
+@include apply-theme-variables;
+
+:global(body) {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  min-width: 320px;
+}
+
+.app-container {
+  width: 100%;
+  min-width: 320px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+
+  // CSS Variables for Light Mode
+  --bg-primary: #fff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --text-tertiary: #6c757d;
+  --border-color: #dee2e6;
+  --primary-color: #32ff7e;
+  --accent-color: #32ff7e;
+  --danger-color: #dc3545;
+  --success-color: #198754;
+
+  &.dark {
+    --bg-primary: #0f0f0f;
+    --bg-secondary: #1f2937;
+    --bg-tertiary: #374151;
+    --text-primary: #d1d5db;
+    --text-secondary: #9ca3af;
+    --text-tertiary: #6b7280;
+    --border-color: #374151;
+    --primary-color: #32ff7e;
+    --accent-color: #32ff7e;
+    --danger-color: #e11d48;
+    --success-color: #10b981;
+  }
+}
+
+.app-main {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.lock-screen-container {
+  width: 100%;
+  min-width: 320px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+
+  // CSS Variables - Dark Mode (Cybersecurity Theme)
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1f2937;
+  --bg-tertiary: #374151;
+  --text-primary: #d1d5db;
+  --text-secondary: #32ff7e;
+  --text-tertiary: #9ca3af;
+  --border-color: #374151;
+  --primary-color: #32ff7e;
+  --accent-color: #32ff7e;
+  --danger-color: #e11d48;
+  --success-color: #00c96c;
+}
+
+.fullscreen-preloader {
+  width: 100%;
+  min-width: 320px;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+
+  // Light Mode Variables
+  --bg-primary: #fff;
+  --text-primary: #212529;
+  --primary-color: #32ff7e;
+
+  &.dark {
+    --bg-primary: #0f0f0f;
+    --text-primary: #d1d5db;
+    --primary-color: #32ff7e;
+  }
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+
+  .spinner-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--primary-color);
+    animation: spin 1s linear infinite;
+  }
+
+  p {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.drag-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(var(--background-rgb, 250, 251, 252), 0.95);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+
+  :global(.dark) & {
+    background-color: rgb(var(--background-rgb, 15, 15, 15), 0.95);
+  }
+
+  .drag-content {
+    width: 100%;
+    height: 100%;
+    border: 4px dashed var(--color-primary, #32ff7e);
+    border-radius: 12px;
+    corner-shape: squircle;
+    corner-shape: squircle;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    pointer-events: none;
+
+    h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-foreground, #0f0f0f);
+    }
+
+    svg {
+      color: var(--color-primary, #32ff7e);
+      filter: drop-shadow(0 0 8px rgb(50, 255, 126, 0.4));
+    }
+  }
+}

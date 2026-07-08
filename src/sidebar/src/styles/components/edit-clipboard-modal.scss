@@ -1,0 +1,489 @@
+@use "../theme.scss" as *;
+
+.edit-clipboard-modal-wrapper {
+  &.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+  }
+
+  .modal-content {
+    background: $card-dark;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    border-radius: 12px;
+    corner-shape: squircle;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $border-dark;
+    transition: all 0.2s ease;
+
+    &.expanded {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 0;
+      corner-shape: squircle;
+      border: none;
+    }
+
+    .modal-header {
+      padding: 8px 12px;
+      border-bottom: 1px solid $border-dark;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h2 {
+        margin: 0;
+        font-size: 15px;
+        color: white;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        .icon-btn {
+          background: transparent;
+          border: none;
+          color: $muted-foreground-dark;
+          cursor: pointer;
+          padding: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 12px;
+          corner-shape: squircle;
+          transition: all 0.2s;
+
+          &:hover {
+            background: $secondary-dark;
+            color: white;
+          }
+
+          svg {
+            width: 16px;
+            height: 16px;
+          }
+        }
+
+        .close-btn {
+          position: static; /* Ensure it's not absolute positioned */
+          background: transparent;
+          border: none;
+          font-size: 24px;
+          cursor: pointer;
+          padding: 0;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 12px;
+          corner-shape: squircle;
+          transition: background 0.2s;
+          color: white;
+
+          &:hover {
+            background: $secondary-dark;
+          }
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+
+    .modal-body {
+      padding: 8px 12px;
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .modal-content.expanded & {
+        overflow: hidden;
+      }
+
+      .rich-editor-container {
+        width: 100%;
+        min-height: 300px; /* Default height */
+
+        &.flex-fill {
+          flex: 1;
+          min-height: 0;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .color-preview-banner {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 12px;
+        background: rgb(255, 255, 255, 0.05);
+        border: 1px solid rgb(255, 255, 255, 0.1);
+        border-radius: 12px;
+        corner-shape: squircle;
+        align-self: flex-start;
+
+        .color-value {
+          font-family: monospace;
+          font-size: 13px;
+          color: white;
+          font-weight: 500;
+        }
+      }
+
+      .color-preview-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        corner-shape: squircle;
+        border: 1px solid rgb(255, 255, 255, 0.2);
+        box-shadow: 0 0 4px rgb(0, 0, 0, 0.5);
+        flex-shrink: 0;
+
+        &.large {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .font-size-controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 2px 6px;
+        background: rgb(255, 255, 255, 0.05);
+        border-radius: 12px;
+        corner-shape: squircle;
+        border: 1px solid rgb(255, 255, 255, 0.1);
+        align-self: flex-start;
+
+        .icon-btn {
+          background: transparent;
+          border: none;
+          color: $muted-foreground-dark;
+          cursor: pointer;
+          padding: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 12px;
+          corner-shape: squircle;
+          transition: all 0.2s;
+
+          &:hover {
+            background: rgb(255, 255, 255, 0.1);
+            color: white;
+          }
+
+          svg {
+            width: 14px;
+            height: 14px;
+          }
+        }
+
+        .font-size-value {
+          font-size: 11px;
+          color: $muted-foreground-dark;
+          min-width: 30px;
+          text-align: center;
+          font-family: monospace;
+        }
+
+        .control-divider {
+          width: 1px;
+          height: 14px;
+          background: rgb(255, 255, 255, 0.1);
+          margin: 0 4px;
+        }
+
+        .theme-toggle {
+          color: $primary !important;
+
+          &:hover {
+            background: rgb(var(--primary-rgb), 0.1) !important;
+          }
+        }
+      }
+    }
+
+    // New styles for single-line inputs
+    .input-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .input-field {
+        width: 100%;
+        padding: 10px 12px;
+        background: $input-dark;
+        border: 1px solid rgb(255, 255, 255, 0.1);
+        border-radius: 12px;
+        corner-shape: squircle;
+        color: white;
+        font-family: monospace;
+        font-size: 14px;
+        outline: none;
+        transition: all 0.2s;
+
+        &.has-color-preview {
+          padding-left: 32px;
+        }
+
+        &:focus {
+          background: rgb(255, 255, 255, 0.03);
+          border-color: $border-focus;
+        }
+      }
+    }
+
+    // Image Preview Styles
+    .image-preview-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      background: $background-dark;
+
+      .image-preview {
+        max-width: 100%;
+        max-height: 300px;
+        object-fit: contain;
+        border-radius: 12px;
+        corner-shape: squircle;
+        border: 1px solid $border-dark;
+      }
+
+      .no-preview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: $muted-foreground-dark;
+        padding: 40px;
+      }
+
+      .info-banner {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        background: rgb(234, 179, 8, 0.1); // yellow/warning tint
+        border: 1px solid rgb(234, 179, 8, 0.2);
+        border-radius: 12px;
+        corner-shape: squircle;
+        color: #ea580c; // orange-600 like or warning text
+        font-size: 13px;
+      }
+    }
+
+    .modal-footer {
+      padding: 8px 12px;
+      border-top: 1px solid $border-dark;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .footer-spacer {
+      flex: 1;
+    }
+
+    .footer-buttons {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+  }
+
+  .btn {
+    flex: none;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 12px;
+    corner-shape: squircle;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 30px;
+    min-height: 30px;
+    max-height: 30px;
+  }
+
+  .btn-secondary {
+    background: $secondary-dark;
+    color: $secondary-foreground-dark;
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+
+  .btn-danger {
+    background: $destructive;
+    color: $destructive-foreground;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+
+  .btn-primary {
+    background: $primary;
+    color: $primary-foreground;
+
+    &:hover {
+      filter: brightness(0.9);
+    }
+  }
+
+  .error-message {
+    color: $destructive;
+    font-size: 14px;
+    padding: 8px 12px;
+    background: rgb(239, 68, 68, 0.1);
+    border-left: 3px solid $destructive;
+    border-radius: 12px;
+    corner-shape: squircle;
+  }
+}
+
+/* Inline styles from EditClipboardModal.svelte */
+
+.icon-btn {
+  background: transparent;
+  border: none;
+  color: $muted-foreground-dark;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  corner-shape: squircle;
+  transition: all 0.2s;
+
+  &:hover {
+    background: rgb(255, 255, 255, 0.1);
+    color: white;
+  }
+
+  &.theme-toggle {
+    color: $primary;
+
+    &:hover {
+      background: rgba($primary, 0.15);
+    }
+  }
+}
+
+.editor-options-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $card-dark;
+  border: 1px solid $border-dark;
+  border-radius: 12px;
+  corner-shape: squircle;
+  padding: 6px 12px;
+  margin-bottom: 12px;
+
+  .options-left,
+  .options-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .options-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: $muted-foreground-dark;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .mode-toggle {
+    display: flex;
+    background: rgb(0, 0, 0, 0.2);
+    padding: 3px;
+    border-radius: 12px;
+    corner-shape: squircle;
+    border: 1px solid $border-dark;
+
+    .toggle-btn {
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      corner-shape: squircle;
+      background: transparent;
+      color: $muted-foreground-dark;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &.active {
+        background: $primary !important;
+        color: black !important;
+        box-shadow: 0 1px 4px rgb(0, 0, 0, 0.4);
+      }
+
+      &:hover:not(.active) {
+        color: white;
+      }
+    }
+  }
+
+  .control-divider {
+    width: 1px;
+    height: 14px;
+    background: $border-dark;
+  }
+}
+
+.font-size-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgb(0, 0, 0, 0.2);
+  border-radius: 12px;
+  corner-shape: squircle;
+  padding: 2px;
+
+  .font-size-value {
+    font-size: 11px;
+    min-width: 28px;
+    text-align: center;
+    color: $muted-foreground-dark;
+  }
+}
+
+.dark-contents {
+  display: contents;
+}

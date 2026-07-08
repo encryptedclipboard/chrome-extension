@@ -1,0 +1,65 @@
+@use "../theme.scss" as *;
+
+.shortcut-recorder {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.shortcut-display {
+  padding: 0 12px;
+  height: 34px;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  corner-shape: squircle;
+  color: var(--text-foreground);
+  font-family: "SF Mono", "Monaco", "Consolas", monospace;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 170px;
+  max-width: 200px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border-color: $border-focus;
+    background: var(--input-bg-hover);
+  }
+
+  &.recording {
+    border-color: var(--primary-color);
+    background: var(--primary-color-alpha);
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+}
+
+.recording-text {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.shortcut-text {
+  font-weight: 600;
+}
+
+.hint {
+  display: none;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}

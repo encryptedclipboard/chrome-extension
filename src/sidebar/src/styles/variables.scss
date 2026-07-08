@@ -1,0 +1,9 @@
+/* SCSS Variables - Design System Variables - Scoped to Extension Only */
+@use "./theme.scss" as *;
+
+/* Toast z-index override - must be higher than sidebar (2147483597) and notch (2147483598) */
+:global(.Vue-Toastification__container),
+:global(.Toastify__toast-container),
+:global(.Vue-Toastification__toast-container) {
+  z-index: 2147483647 !important; /* Maximum z-index value */
+}

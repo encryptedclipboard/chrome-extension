@@ -1,0 +1,15 @@
+node_modules
+package-lock.json
+dist
+build
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+.vscode
+.idea
+.opencode
+# Build artifacts from vite-plugin-checker TypeScript compilation
+src/sidebar/vite.config.js
+src/sidebar/vite.config.d.ts

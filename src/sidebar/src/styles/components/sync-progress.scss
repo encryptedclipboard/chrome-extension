@@ -1,0 +1,119 @@
+.sync-progress-container {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  left: 20px;
+  z-index: 9999;
+  width: calc(100% - 40px);
+  max-width: calc(100% - 40px);
+  pointer-events: none;
+
+  @media (width >= 768px) {
+    left: auto;
+    width: 300px;
+    min-width: 300px;
+    max-width: 300px;
+  }
+
+  .progress-card {
+    pointer-events: auto;
+    background: hsl(215deg, 28%, 17%);
+    border: 1px solid hsl(215deg, 28%, 25%);
+    border-radius: 12px;
+    corner-shape: squircle;
+    box-shadow:
+      0 4px 6px -1px rgb(0, 0, 0, 0.3),
+      0 2px 4px -1px rgb(0, 0, 0, 0.2);
+    padding: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+
+  .content {
+    flex: 1;
+    min-width: 0;
+
+    .title {
+      font-weight: 600;
+      font-size: 14px;
+      color: hsl(210deg, 20%, 82%);
+      margin-bottom: 2px;
+    }
+
+    .message {
+      font-size: 12px;
+      color: hsl(210deg, 20%, 65%);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.progress-bar-bg {
+  height: 4px;
+  background: rgb(255, 255, 255, 0.15);
+  border-radius: 2px;
+  corner-shape: squircle;
+  width: 100%;
+  overflow: hidden;
+
+  .progress-bar-fill {
+    height: 100%;
+    background: hsl(145deg, 100%, 60%);
+    transition: width 0.5s ease;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgb(255, 255, 255, 0.25) 50%,
+        transparent 100%
+      );
+      background-size: 200% 100%;
+      animation: progress-shimmer 1.5s ease-in-out infinite;
+    }
+
+    &.success {
+      background: hsl(145deg, 100%, 60%);
+
+      &::after {
+        animation: none;
+        background: none;
+      }
+    }
+
+    &.error {
+      background: hsl(348deg, 83%, 51%);
+
+      &::after {
+        animation: none;
+        background: none;
+      }
+    }
+  }
+}
+
+@keyframes progress-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}

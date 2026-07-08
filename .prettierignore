@@ -1,0 +1,17 @@
+node_modules
+build
+dist
+bun.lock
+bun.lockb
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.env
+.env.*
+*.min.js
+*.min.css
+src/sidebar/vite.config.js
+src/sidebar/vite.config.d.ts
+src/background/dist
+src/sidebar/dist
+src/clipboard-palette/dist

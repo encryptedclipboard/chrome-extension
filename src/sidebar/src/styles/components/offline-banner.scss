@@ -1,0 +1,67 @@
+.offline-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-background);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  color: var(--text-foreground);
+  animation: slideDown 0.2s ease-out;
+  position: relative; // For absolute close button
+
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    flex: 1; // Take available space
+    padding-right: 20px; // Space for close button
+
+    :global(.icon) {
+      color: var(--text-muted-foreground);
+      min-width: 16px;
+    }
+  }
+
+  .dismiss-btn {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgb(0, 0, 0, 0.1); // Slight background
+    border: none;
+    color: var(--text-muted-foreground);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 12px;
+    corner-shape: squircle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    opacity: 0; // Hide by default
+    z-index: 5;
+
+    &:hover {
+      background-color: var(--input-bg);
+      color: var(--text-foreground);
+    }
+  }
+
+  &:hover .dismiss-btn {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,15 @@
+@use "../theme.scss" as *;
+
+.json-editor-wrapper {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  corner-shape: squircle;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Layout container */
+.json-editor-container {
+  width: 100%;
+}

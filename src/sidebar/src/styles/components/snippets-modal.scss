@@ -1,0 +1,116 @@
+@use "../theme.scss" as *;
+
+.field-group {
+  margin-bottom: 16px;
+
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+
+  &.editor-group {
+    label {
+      margin-bottom: 8px;
+    }
+  }
+
+  .input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .prefix {
+      position: absolute;
+      left: 10px;
+      color: var(--text-tertiary);
+      font-size: 14px;
+      pointer-events: none;
+      font-weight: 600;
+      z-index: 1;
+    }
+
+    .input-field.has-prefix {
+      padding-left: 24px;
+    }
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 8px 10px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    corner-shape: squircle;
+    color: var(--text-primary);
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+
+    &:focus {
+      border-color: $border-focus;
+    }
+
+    &.input-error {
+      border-color: var(--danger-color);
+    }
+  }
+
+  .field-error {
+    margin: 6px 0 0;
+    font-size: 12px;
+    color: var(--danger-color);
+  }
+
+  .hint {
+    margin: 6px 0 0;
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+}
+
+.language-selector {
+  margin-bottom: 12px;
+
+  label {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .lang-select {
+    width: 100%;
+    padding: 8px 10px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    corner-shape: squircle;
+    color: var(--text-primary);
+    font-size: 13px;
+    outline: none;
+    margin-top: 4px;
+  }
+}
+
+.code-editor-container {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  corner-shape: squircle;
+  overflow: hidden;
+}
+
+.rich-editor-container {
+  min-height: 200px;
+}
+
+.error-message {
+  color: var(--danger-color);
+  font-size: 13px;
+  padding: 8px 12px;
+  background: rgb(239, 68, 68, 0.1);
+  border-left: 3px solid var(--danger-color);
+  border-radius: 12px;
+  corner-shape: squircle;
+  margin-top: 12px;
+}

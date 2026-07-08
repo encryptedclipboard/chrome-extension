@@ -1,0 +1,161 @@
+@use "../theme.scss" as *;
+
+/* Premium Quill Wrapper */
+.quill-premium-wrapper {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  corner-shape: squircle;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  height: var(--editor-height); /* Use the height prop */
+
+  &:focus-within {
+    border-color: $border-focus;
+    box-shadow: 0 0 0 1px $border-focus-glow;
+  }
+
+  &.dark-mode {
+    background-color: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 4px 12px rgb(0, 0, 0, 0.3);
+
+    &:focus-within {
+      border-color: $border-focus;
+    }
+  }
+}
+
+/* Toolbar Styling */
+:global(.ql-toolbar.ql-snow) {
+  background-color: #f8fafc !important;
+  border: none !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+  padding: 10px 12px !important;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  transition: all 0.3s ease;
+  flex-shrink: 0; /* Don't shrink toolbar */
+}
+
+.dark-mode :global(.ql-toolbar.ql-snow) {
+  background-color: #0f172a !important;
+  border-bottom-color: #334155 !important;
+}
+
+/* Editor Container */
+:global(.ql-container.ql-snow) {
+  border: none !important;
+  flex: 1; /* Take remaining height */
+  overflow: hidden; /* Let .ql-editor handle scrolling */
+  display: flex;
+  flex-direction: column;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif !important;
+  font-size: 14px !important;
+  background-color: #fff !important;
+  transition: all 0.3s ease;
+  min-height: 0; /* Important for flex child to be scrollable */
+}
+
+.dark-mode :global(.ql-container.ql-snow) {
+  background-color: #1e293b !important;
+}
+
+/* Editor Content Area */
+:global(.ql-editor) {
+  color: #1e293b !important;
+  padding: 16px 20px !important;
+  line-height: 1.6 !important;
+  flex: 1;
+  overflow-y: auto; /* Internal scrolling */
+  min-height: 120px;
+
+  &.ql-blank::before {
+    color: #94a3b8 !important;
+    font-style: normal !important;
+    left: 20px !important;
+  }
+}
+
+.dark-mode :global(.ql-editor) {
+  color: #f1f5f9 !important;
+
+  &.ql-blank::before {
+    color: #64748b !important;
+  }
+}
+
+/* Toolbar Button Icons */
+:global(.ql-snow .ql-stroke) {
+  stroke: #64748b !important;
+  stroke-width: 2px !important;
+  transition: stroke 0.2s ease;
+}
+
+.dark-mode :global(.ql-snow .ql-stroke) {
+  stroke: #94a3b8 !important;
+}
+
+:global(.ql-snow .ql-fill) {
+  fill: #64748b !important;
+  transition: fill 0.2s ease;
+}
+
+.dark-mode :global(.ql-snow .ql-fill) {
+  fill: #94a3b8 !important;
+}
+
+:global(.ql-snow .ql-picker) {
+  color: #64748b !important;
+}
+
+.dark-mode :global(.ql-snow .ql-picker) {
+  color: #94a3b8 !important;
+}
+
+/* Hover & Active States */
+:global(.ql-snow.ql-toolbar button:hover),
+:global(.ql-snow.ql-toolbar button.ql-active),
+:global(.ql-snow .ql-picker-label:hover),
+:global(.ql-snow .ql-picker-label.ql-active),
+:global(.ql-snow .ql-picker-item:hover),
+:global(.ql-snow .ql-picker-item.ql-selected) {
+  color: #32ff7e !important;
+}
+
+:global(.ql-snow.ql-toolbar button:hover .ql-stroke),
+:global(.ql-snow.ql-toolbar button.ql-active .ql-stroke) {
+  stroke: #32ff7e !important;
+}
+
+:global(.ql-snow.ql-toolbar button:hover .ql-fill),
+:global(.ql-snow.ql-toolbar button.ql-active .ql-fill) {
+  fill: #32ff7e !important;
+}
+
+/* Hide the default Quill tooltip which can be ugly */
+:global(.ql-snow .ql-tooltip) {
+  border-radius: 12px !important;
+  corner-shape: squircle;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 4px 6px -1px rgb(0, 0, 0, 0.1) !important;
+  background-color: #fff !important;
+  color: #1e293b !important;
+  padding: 8px 12px !important;
+}
+
+.dark-mode :global(.ql-snow .ql-tooltip) {
+  background-color: #334155 !important;
+  border-color: #475569 !important;
+  color: #f1f5f9 !important;
+}

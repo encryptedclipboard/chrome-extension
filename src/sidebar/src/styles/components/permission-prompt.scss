@@ -1,0 +1,142 @@
+@use "../theme.scss" as *;
+
+.permission-prompt-wrapper {
+  // .permission-prompt is the root class in the component
+  &.permission-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 48px 32px;
+    text-align: center;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 16px;
+    overflow-y: auto;
+    max-height: 100%;
+  }
+
+  .prompt-icon {
+    color: var(--primary-color, #ffd700);
+    margin-bottom: 8px;
+    opacity: 0.9;
+  }
+
+  .prompt-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--text-primary);
+  }
+
+  .prompt-description {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .premium-warning {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: rgb(255, 215, 0, 0.1);
+    border: 1px solid rgb(255, 215, 0, 0.3);
+    border-radius: 12px;
+    corner-shape: squircle;
+    color: var(--primary-color, #ffd700);
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+  }
+
+  .permission-list {
+    width: 100%;
+    margin-top: 8px;
+
+    .list-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 12px 0;
+      text-align: left;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        background: var(--card-bg, rgb(255, 255, 255, 0.05));
+        border: 1px solid var(--border-color, rgb(255, 255, 255, 0.1));
+        border-radius: 12px;
+        corner-shape: squircle;
+        font-size: 14px;
+        text-align: left;
+        color: var(--text-secondary);
+
+        :global(svg) {
+          color: var(--success-color, #4ade80);
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+
+  .instruction-box {
+    width: 100%;
+    padding: 16px;
+    background: rgb(50, 255, 126, 0.1);
+    border: 1px solid rgb(50, 255, 126, 0.3);
+    border-radius: 12px;
+    corner-shape: squircle;
+    color: var(--primary-color);
+    font-size: 14px;
+    margin-top: 8px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    text-align: left;
+
+    :global(svg) {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .instruction-content {
+      flex: 1;
+
+      strong {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      ol {
+        margin: 0;
+        padding-left: 20px;
+
+        li {
+          margin-bottom: 4px;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+  .prompt-note {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin: 8px 0 0 0;
+    line-height: 1.4;
+  }
+}

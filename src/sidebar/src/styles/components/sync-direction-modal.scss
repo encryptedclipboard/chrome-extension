@@ -1,0 +1,107 @@
+@use "../theme.scss" as *;
+
+/*
+     We reuse .modal-overlay, .modal-content, .modal-header, .close-btn from edit-clipboard-modal.scss
+     by importing it and using the classes. We only add specific styles for the grid/cards here.
+  */
+
+.modal-content {
+  max-width: 400px;
+}
+
+.description {
+  margin: 0 0 16px 0 !important;
+  color: var(--text-secondary);
+  font-size: 14px;
+  text-align: center;
+}
+
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  corner-shape: squircle;
+  padding: 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  width: 100%;
+  color: var(--text-primary);
+}
+
+.option-card:hover:not(.disabled) {
+  background: var(--bg-hover);
+  border-color: $border-focus;
+  transform: translateY(-1px);
+}
+
+.option-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  transform: none !important;
+  transition: none !important;
+  pointer-events: auto; /* To show the title/tooltip */
+}
+
+.option-card.disabled:hover {
+  background: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  transform: none !important;
+}
+
+.icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  corner-shape: squircle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-wrapper.download {
+  background: rgb(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.icon-wrapper.upload {
+  background: rgb(245, 158, 11, 0.1);
+  color: $warning;
+}
+
+.icon-wrapper.sync {
+  background: rgb(59, 130, 246, 0.1);
+  color: #3b82f6;
+}
+
+.option-card.disabled .icon-wrapper.upload,
+.option-card.disabled .icon-wrapper.sync {
+  background: rgb(128, 128, 128, 0.1);
+  color: var(--text-secondary);
+}
+
+.content h4 {
+  margin: 0 0 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.content p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}

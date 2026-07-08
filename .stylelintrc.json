@@ -1,0 +1,42 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "ignoreFiles": [
+    "build/**",
+    "dist/**",
+    "node_modules/**",
+    "src/background/node_modules/**",
+    "src/sidebar/node_modules/**",
+    "src/clipboard-palette/node_modules/**"
+  ],
+  "rules": {
+    "selector-class-pattern": null,
+    "selector-id-pattern": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global", "local", "export"]
+      }
+    ],
+    "scss/at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": ["tailwind", "apply", "layer", "config"]
+      }
+    ],
+    "no-descending-specificity": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "shorthand-property-no-redundant-values": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "font-family-name-quotes": null,
+    "import-notation": null,
+    "keyframes-name-pattern": null,
+    "declaration-block-no-duplicate-properties": [
+      true,
+      {
+        "ignore": ["consecutive-duplicates-with-different-values"]
+      }
+    ],
+    "declaration-property-value-keyword-no-deprecated": null
+  }
+}

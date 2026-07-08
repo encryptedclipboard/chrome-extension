@@ -1,0 +1,69 @@
+/* Tippy.js Custom Theme for Sidebar */
+
+/* Import base tippy styles */
+@import "tippy.js/dist/tippy.css";
+
+/* Custom theme matching sidebar design */
+.tippy-box[data-theme~="sidebar"] {
+  background-color: hsl(240deg 10% 3.9%);
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 12px;
+  corner-shape: squircle;
+  box-shadow: 0 4px 14px rgb(0, 0, 0, 0.3);
+
+  .tippy-content {
+    padding: 0;
+  }
+
+  .tippy-arrow {
+    color: hsl(240deg 10% 3.9%);
+  }
+}
+
+/* Light theme variant */
+.tippy-box[data-theme~="sidebar-light"] {
+  background-color: white;
+  color: hsl(240deg 10% 3.9%);
+  border: 1px solid hsl(240deg 5.9% 90%);
+  box-shadow: 0 4px 14px rgb(0, 0, 0, 0.15);
+
+  .tippy-arrow {
+    color: white;
+  }
+
+  .tippy-arrow::before {
+    border-top-color: hsl(240deg 5.9% 90%);
+    border-bottom-color: hsl(240deg 5.9% 90%);
+    border-left-color: hsl(240deg 5.9% 90%);
+    border-right-color: hsl(240deg 5.9% 90%);
+  }
+}
+
+/* Animations */
+.tippy-box[data-animation="fade"][data-state="hidden"] {
+  opacity: 0;
+}
+
+.tippy-box[data-animation="fade"][data-state="visible"] {
+  opacity: 1;
+}
+
+/* Placement adjustments */
+.tippy-box[data-placement^="top"] > .tippy-arrow {
+  bottom: -4px;
+}
+
+.tippy-box[data-placement^="bottom"] > .tippy-arrow {
+  top: -4px;
+}
+
+.tippy-box[data-placement^="left"] > .tippy-arrow {
+  right: -4px;
+}
+
+.tippy-box[data-placement^="right"] > .tippy-arrow {
+  left: -4px;
+}

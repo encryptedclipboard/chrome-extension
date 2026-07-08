@@ -1,0 +1,131 @@
+@use "../theme.scss" as *;
+
+.toggle-switch-wrapper {
+  // .toggle-switch is the root class
+  &.toggle-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    background: var(--bg-tertiary, #bbb);
+    border-radius: 999px;
+    corner-shape: squircle;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+
+    &.md {
+      width: 38px;
+      height: 20px;
+
+      .toggle-thumb {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &.sm {
+      width: 32px;
+      height: 18px;
+
+      .toggle-thumb {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    .toggle-thumb {
+      background: white;
+      border-radius: 50%;
+      corner-shape: squircle;
+      box-shadow: 0 1px 2px rgb(0, 0, 0, 0.1);
+      transition: left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: absolute;
+      left: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.checked {
+      background: #32ff7e;
+
+      .toggle-thumb {
+        left: calc(100% - 2px - var(--thumb-size, 16px));
+        background: #000;
+      }
+    }
+
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* Inline styles from Toggle.svelte */
+
+.toggle-switch-wrapper {
+  &.toggle-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    border: none;
+    background: #{$secondary-dark}; /* Hardcoded dark mode background */
+    border-radius: 999px;
+    corner-shape: squircle;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+    flex-shrink: 0; /* Prevent collapsing */
+
+    &.md {
+      width: 38px;
+      height: 20px;
+
+      .toggle-thumb {
+        width: 16px;
+        height: 16px;
+
+        --thumb-size: 16px;
+      }
+    }
+
+    &.sm {
+      width: 32px;
+      height: 18px;
+
+      .toggle-thumb {
+        width: 14px;
+        height: 14px;
+
+        --thumb-size: 14px;
+      }
+    }
+
+    .toggle-thumb {
+      background: white;
+      border-radius: 50%;
+      corner-shape: squircle;
+      box-shadow: 0 1px 2px rgb(0, 0, 0, 0.1);
+      transition: left 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: absolute;
+      left: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.checked {
+      background: #{$primary};
+
+      .toggle-thumb {
+        left: calc(100% - 2px - var(--thumb-size, 16px));
+        background: #{$primary-foreground};
+      }
+    }
+
+    &.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}

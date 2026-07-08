@@ -1,0 +1,15 @@
+export enum ClipboardItemType {
+  TEXT = "text",
+  JSON = "json",
+  PHONE = "phone",
+  IP = "ip",
+  OTP = "otp",
+  URL = "url",
+  EMOJI = "emoji",
+  IMAGE = "image",
+  EMAIL = "email",
+  MARKDOWN = "markdown",
+  HTML = "html",
+  ENV = "env",
+  SSH_KEY = "ssh_key",
+}

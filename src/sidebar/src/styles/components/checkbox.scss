@@ -1,0 +1,43 @@
+.custom-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  corner-shape: squircle;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  vertical-align: middle;
+  margin: 0 auto;
+
+  &.no-margin {
+    margin: 0;
+  }
+
+  &.checked {
+    background-color: #39ff14;
+    border-color: #39ff14;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: #ccc;
+    }
+  }
+
+  .tick {
+    width: 13px;
+    height: 13px;
+    color: #2d2d2d;
+  }
+
+  &:hover {
+    border-color: #39ff14;
+  }
+}

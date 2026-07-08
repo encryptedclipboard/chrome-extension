@@ -1,0 +1,117 @@
+.logout-modal {
+  max-width: 400px;
+}
+
+.description {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 20px; /* Increased gap */
+  line-height: 1.5;
+}
+
+.options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.option-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px; /* Increased padding */
+  border-radius: 12px; /* Softer radius */
+  corner-shape: squircle;
+  background: rgb(255, 255, 255, 0.03);
+  border: 1px solid rgb(255, 255, 255, 0.05);
+  text-align: left;
+  transition: all 0.2s ease;
+  cursor: pointer; /* Explicit cursor pointer */
+  position: relative;
+  overflow: hidden;
+
+  p {
+    cursor: pointer;
+  }
+
+  &:hover {
+    background: rgb(255, 255, 255, 0.06);
+    border-color: rgb(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  .icon-wrapper {
+    padding: 10px;
+    border-radius: 12px;
+    corner-shape: squircle;
+    corner-shape: squircle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .text-content {
+    flex: 1;
+
+    h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text-foreground);
+    }
+
+    p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.4;
+    }
+  }
+
+  /* Option Specific Styles */
+  &.keep {
+    .icon-wrapper {
+      background: rgb(74, 222, 128, 0.1);
+      color: #4ade80; /* Green-400 */
+    }
+
+    &:hover {
+      border-color: rgb(74, 222, 128, 0.2);
+      background: rgb(74, 222, 128, 0.05);
+    }
+  }
+
+  &.clear {
+    .icon-wrapper {
+      background: rgb(248, 113, 113, 0.1);
+      color: #f87171; /* Red-400 */
+    }
+
+    &:hover {
+      border-color: rgb(248, 113, 113, 0.2);
+      background: rgb(248, 113, 113, 0.05);
+    }
+  }
+}
+
+.btn-ghost {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 12px;
+  corner-shape: squircle;
+  transition: all 0.2s;
+
+  &:hover {
+    background: rgb(255, 255, 255, 0.05);
+    color: var(--text-foreground);
+  }
+}

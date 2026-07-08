@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install root dependencies
+        run: bun install
+
+      - name: Install sub-package dependencies
+        run: bun run install:dep
+
+      - name: Set version from tag
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "EXTENSION_VERSION=$VERSION" > .env
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Build extension
+        run: bun run build
+
+      - name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --title "Encrypted Clipboard Manager v${GITHUB_REF_NAME#v}" \
+            --generate-notes \
+            build/encryptedclipboard-v*.zip \
+            build/encryptedclipboard-source-v*.zip

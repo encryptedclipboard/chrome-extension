@@ -1,0 +1,28 @@
+/* Removed overrides to align with standard Banner styles */
+.details {
+  font-size: 0.75rem;
+  color: var(--text-muted-foreground);
+
+  p {
+    margin: 0 0 0.5rem 0;
+  }
+
+  .fix-title {
+    font-weight: 600;
+    margin-top: 0.5rem;
+    color: var(--text-foreground);
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 1.25rem;
+
+    li {
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  b {
+    color: var(--text-foreground);
+  }
+}

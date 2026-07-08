@@ -1,0 +1,121 @@
+/* SCSS Theme Variables - Compile-time Variables, Not Runtime CSS Variables */
+
+/* These are scoped to the extension and won't leak to host websites */
+
+/* Cybersecurity Theme: Charcoal + Neon Green */
+
+/* Light Mode Theme Variables */
+$background: hsl(210deg, 20%, 98%); /* #FAFBFC - Lighter background */
+$foreground: hsl(0deg, 0%, 6%); /* #0F0F0F - Charcoal black */
+$card: hsl(0deg, 0%, 100%); /* White cards */
+$card-foreground: hsl(0deg, 0%, 6%);
+$popover: hsl(0deg, 0%, 100%);
+$popover-foreground: hsl(0deg, 0%, 6%);
+$primary: hsl(145deg, 100%, 60%); /* #32FF7E - Neon green */
+$primary-foreground: hsl(0deg, 0%, 6%); /* Charcoal text on neon */
+$secondary: hsl(215deg, 28%, 17%); /* #1F2937 - Dark gray */
+$secondary-foreground: hsl(0deg, 0%, 98%); /* White text on dark */
+$muted: hsl(210deg, 20%, 94%); /* Lighter muted background */
+$muted-foreground: hsl(215deg, 16%, 35%); /* Darker muted text for visibility */
+$accent: hsl(145deg, 100%, 60%); /* #32FF7E - Neon green accent */
+$accent-foreground: hsl(0deg, 0%, 6%);
+$destructive: hsl(348deg, 83%, 51%); /* #E11D48 - Danger red */
+$destructive-foreground: hsl(0deg, 0%, 98%);
+$border: hsl(210deg, 20%, 88%); /* More visible borders */
+$input: hsl(210deg, 20%, 88%);
+$ring: hsl(145deg, 100%, 60%); /* Neon green ring */
+$radius: 12px;
+
+/* Dark muted danger for hollow button borders */
+$destructive-muted: hsl(348deg, 40%, 35%);
+
+/* Warning amber */
+$warning: hsl(38deg, 92%, 50%); /* #f59e0b */
+
+/* Subtle green for hover/focus border highlights */
+$border-focus: rgba(50, 255, 126, 0.4);
+$border-focus-glow: rgba(50, 255, 126, 0.1);
+
+/* Dark Mode Theme Variables */
+$background-dark: hsl(0deg, 0%, 6%); /* #0F0F0F - Charcoal black */
+$foreground-dark: hsl(210deg, 20%, 82%); /* #D1D5DB - Light gray text */
+$card-dark: hsl(215deg, 28%, 17%); /* #1F2937 - Dark gray cards */
+$card-foreground-dark: hsl(210deg, 20%, 82%);
+$popover-dark: hsl(215deg, 28%, 17%);
+$popover-foreground-dark: hsl(210deg, 20%, 82%);
+$primary-dark: hsl(145deg, 100%, 60%); /* #32FF7E - Neon green */
+$primary-foreground-dark: hsl(0deg, 0%, 6%); /* Charcoal text on neon */
+$secondary-dark: hsl(215deg, 28%, 25%); /* Lighter dark gray */
+$secondary-foreground-dark: hsl(210deg, 20%, 82%);
+$muted-dark: hsl(215deg, 28%, 25%);
+$muted-foreground-dark: hsl(210deg, 20%, 65%);
+$accent-dark: hsl(145deg, 100%, 60%); /* #32FF7E - Neon green accent */
+$accent-foreground-dark: hsl(0deg, 0%, 6%);
+$destructive-dark: hsl(348deg, 83%, 51%); /* #E11D48 - Danger red */
+$destructive-foreground-dark: hsl(210deg, 20%, 82%);
+$border-dark: hsl(215deg, 28%, 25%);
+$input-dark: hsl(215deg, 28%, 25%);
+$ring-dark: hsl(145deg, 100%, 60%); /* Neon green ring */
+
+/* Mixin for theme-aware properties */
+@mixin theme-aware($property, $light-value, $dark-value) {
+  #{$property}: $light-value;
+
+  :global(.dark) & {
+    #{$property}: $dark-value;
+  }
+}
+
+/* Utility classes for theme variables - should be included in the root component */
+@mixin apply-theme-variables {
+  :global(:root) {
+    /* Background colors */
+    --bg-background: #{$background};
+    --bg-primary: #{$card};
+    --bg-secondary: #{$background};
+    --bg-tertiary: #{$muted};
+
+    /* Text colors */
+    --text-foreground: #{$foreground};
+    --text-primary: #{$foreground};
+    --text-secondary: #{$muted-foreground};
+    --text-tertiary: #{$muted-foreground};
+    --text-muted-foreground: #{$muted-foreground};
+
+    /* Interactive colors */
+    --color-primary: #{$primary};
+    --primary-color: #{$primary};
+    --neon-color: #{$primary};
+    --color-accent: #{$accent};
+    --color-destructive: #{$destructive};
+    --danger-color: #{$destructive};
+    --warning-color: #{$warning};
+    --success-color: #198754;
+
+    /* Border and input */
+    --border-color: #{$border};
+    --input-bg: #{$input};
+  }
+
+  /* Apply dark mode variants */
+  :global(.dark) {
+    --bg-background: #{$background-dark};
+    --bg-primary: #{$background-dark};
+    --bg-secondary: #{$card-dark};
+    --bg-tertiary: #{$secondary-dark};
+    --text-foreground: #{$foreground-dark};
+    --text-primary: #{$foreground-dark};
+    --text-secondary: #{$muted-foreground-dark};
+    --text-tertiary: #{$muted-foreground-dark};
+    --text-muted-foreground: #{$muted-foreground-dark};
+    --color-primary: #{$primary-dark};
+    --primary-color: #{$primary-dark};
+    --neon-color: #{$primary-dark};
+    --color-accent: #{$accent-dark};
+    --color-destructive: #{$destructive-dark};
+    --danger-color: #{$destructive-dark};
+    --success-color: #10b981;
+    --border-color: #{$border-dark};
+    --input-bg: #{$input-dark};
+  }
+}

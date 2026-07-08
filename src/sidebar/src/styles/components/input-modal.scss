@@ -1,0 +1,53 @@
+@use "confirm-modal.scss" as *;
+@use "../theme.scss" as *;
+
+.input-modal-wrapper {
+  // Inherit overlay styles from confirm-modal or similar if needed,
+  // but since we are replacing the style block that imported confirm-modal,
+  // we can rely on confirm-modal wrapper if we wrap it, OR just import it here.
+  // The original component imported confirm-modal.scss and then added custom styles.
+  // We will assume usage of .confirm-modal-wrapper or we can explicitly include it.
+
+  // Actually, let's just put the added styles here.
+  // The component template uses .modal-overlay which might match confirm-modal styles.
+
+  .input-field {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid $border;
+    border-radius: 12px;
+    corner-shape: squircle;
+    background: $background;
+    color: $foreground;
+    font-size: 14px;
+    transition: all 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: $border-focus;
+      box-shadow: 0 0 0 1px $border-focus-glow;
+    }
+
+    :global(.dark) & {
+      background: $background-dark;
+      border-color: $border-dark;
+      color: $foreground-dark;
+    }
+  }
+
+  .mb-3 {
+    margin-bottom: 12px;
+  }
+
+  .text-sm {
+    font-size: 14px;
+  }
+
+  .text-muted-foreground {
+    color: $muted-foreground;
+
+    :global(.dark) & {
+      color: $muted-foreground-dark;
+    }
+  }
+}

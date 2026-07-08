@@ -1,0 +1,138 @@
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
+import svelte from "eslint-plugin-svelte";
+
+export default tseslint.config(
+  {
+    ignores: [
+      "build/**",
+      "dist/**",
+      "node_modules/**",
+      "src/background/node_modules/**",
+      "src/sidebar/node_modules/**",
+      "src/clipboard-palette/node_modules/**",
+      "src/sidebar/vite.config.js",
+      "src/sidebar/vite.config.d.ts",
+      "bun.lock",
+      "*.min.js",
+    ],
+  },
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...svelte.configs["flat/recommended"],
+  {
+    rules: {
+      "no-undef": "off",
+      "preserve-caught-error": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-unsafe-function-type": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/no-require-imports": "off",
+      "no-console": "off",
+      "no-empty": "off",
+      "no-useless-escape": "off",
+      "no-useless-catch": "off",
+      "no-useless-assignment": "off",
+      "no-misleading-character-class": "off",
+      "no-control-regex": "off",
+      "prefer-const": "off",
+      "no-case-declarations": "off",
+    },
+  },
+  {
+    files: ["**/*.svelte", "**/*.svelte.ts", "**/*.svelte.js"],
+    languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser,
+      },
+    },
+    rules: {
+      "svelte/require-each-key": "off",
+      "svelte/prefer-svelte-reactivity": "off",
+      "svelte/no-unused-svelte-ignore": "off",
+      "svelte/no-dom-manipulating": "off",
+      "svelte/infinite-reactive-loop": "off",
+      "svelte/prefer-writable-derived": "off",
+      "svelte/no-at-html-tags": "off",
+      "svelte/no-useless-mustaches": "off",
+    },
+  },
+  {
+    files: ["scripts/**", "*.config.js", "*.config.mjs"],
+    languageOptions: {
+      globals: {
+        console: "readonly",
+        process: "readonly",
+        require: "readonly",
+        __dirname: "readonly",
+        module: "readonly",
+        exports: "readonly",
+      },
+    },
+  },
+  {
+    files: ["src/background/**/*.ts"],
+    languageOptions: {
+      globals: {
+        chrome: "readonly",
+        self: "readonly",
+        setTimeout: "readonly",
+        clearTimeout: "readonly",
+        setInterval: "readonly",
+        clearInterval: "readonly",
+        fetch: "readonly",
+        crypto: "readonly",
+        URL: "readonly",
+        TextEncoder: "readonly",
+        TextDecoder: "readonly",
+        console: "readonly",
+        navigator: "readonly",
+        performance: "readonly",
+        Worker: "readonly",
+        Blob: "readonly",
+        importScripts: "readonly",
+      },
+    },
+  },
+  {
+    files: ["src/content/**/*.ts"],
+    languageOptions: {
+      globals: {
+        chrome: "readonly",
+        document: "readonly",
+        window: "readonly",
+        console: "readonly",
+        MutationObserver: "readonly",
+        setTimeout: "readonly",
+        clearTimeout: "readonly",
+        setInterval: "readonly",
+        clearInterval: "readonly",
+        URL: "readonly",
+        Node: "readonly",
+        Element: "readonly",
+        HTMLElement: "readonly",
+        XMLHttpRequest: "readonly",
+        navigator: "readonly",
+        getSelection: "readonly",
+        ClipboardItem: "readonly",
+        fetch: "readonly",
+        customElements: "readonly",
+        requestAnimationFrame: "readonly",
+        cancelAnimationFrame: "readonly",
+      },
+    },
+  },
+  {
+    files: ["src/offscreen/**/*.ts"],
+    languageOptions: {
+      globals: {
+        chrome: "readonly",
+        document: "readonly",
+        window: "readonly",
+        console: "readonly",
+      },
+    },
+  },
+);

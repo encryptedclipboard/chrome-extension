@@ -1,0 +1,329 @@
+@use "../theme.scss" as *;
+
+.lock-screen {
+  height: 100%;
+  width: 100%;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .lock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    max-width: 400px;
+    width: 100%;
+    padding: 40px 20px;
+
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+
+      .logo-image {
+        width: auto;
+        height: 50px;
+      }
+    }
+
+    .lock-title {
+      text-align: center;
+
+      h2 {
+        margin: 0 0 8px 0;
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      p {
+        margin: 0;
+        font-size: 14px;
+        color: var(--text-secondary);
+      }
+    }
+
+    .pin-inputs {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+
+      .pin-input {
+        width: 48px;
+        height: 56px;
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        corner-shape: squircle;
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        outline: none;
+        transition: all 0.2s;
+
+        &:focus {
+          border-color: $border-focus;
+          background: var(--bg-primary);
+        }
+
+        &.filled {
+          border-color: var(--primary-color);
+          background: var(--bg-primary);
+        }
+
+        &.error {
+          border-color: var(--danger-color);
+          animation: shake 0.5s;
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    .error-message {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--danger-color);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .unlock-btn {
+      width: 100%;
+      padding: 12px;
+      background: var(--primary-color);
+      color: black;
+      border: none;
+      border-radius: 12px;
+      corner-shape: squircle;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover:not(:disabled) {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    .reset-btn {
+      padding: 8px 16px;
+      background: transparent;
+      color: var(--text-secondary);
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover:not(:disabled) {
+        color: var(--danger-color);
+        text-decoration: underline;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        text-decoration: none;
+      }
+    }
+
+    .unlock-progress-container {
+      width: 100%;
+      margin-top: -16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+
+      .unlock-emoji {
+        font-size: 36px;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+
+      .unlock-emoji-text {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--primary-color);
+        margin-bottom: 4px;
+      }
+
+      .pulse {
+        animation: unlockPulse 2s ease-in-out infinite;
+      }
+
+      .progress-bar-bg {
+        width: 100%;
+        height: 8px;
+        background: var(--bg-tertiary);
+        border-radius: 12px;
+        corner-shape: squircle;
+        overflow: hidden;
+
+        .progress-bar-fill {
+          height: 100%;
+          background: var(--primary-color);
+          transition: width 0.3s ease;
+        }
+      }
+
+      .progress-text {
+        font-size: 12px;
+        color: var(--text-secondary);
+        text-align: center;
+      }
+    }
+  }
+
+  // Modal styles
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+
+    .modal-content {
+      background: #{$card-dark};
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      corner-shape: squircle;
+      padding: 24px;
+      max-width: 450px;
+      width: 90%;
+      box-shadow:
+        0 20px 25px -5px rgb(0, 0, 0, 0.1),
+        0 8px 10px -6px rgb(0, 0, 0, 0.1);
+
+      .modal-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 16px;
+
+        h3 {
+          margin: 0;
+          font-size: 18px;
+          font-weight: 600;
+          color: var(--text-primary);
+        }
+      }
+
+      .modal-body {
+        margin-bottom: 24px;
+
+        p {
+          margin: 0 0 12px 0;
+          font-size: 14px;
+          line-height: 1.5;
+          color: var(--text-secondary);
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          strong {
+            color: var(--text-primary);
+          }
+        }
+
+        .warning-text {
+          padding: 12px;
+          background: rgb(239, 68, 68, 0.1);
+          border-left: 3px solid var(--danger-color);
+          border-radius: 12px;
+          corner-shape: squircle;
+          color: var(--danger-color);
+          font-weight: 500;
+        }
+      }
+
+      .modal-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: flex-end;
+
+        .btn {
+          padding: 8px 16px;
+          border: none;
+          border-radius: 12px;
+          corner-shape: squircle;
+          font-size: 14px;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s;
+
+          &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+          }
+
+          &.btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+
+            &:hover:not(:disabled) {
+              background: var(--bg-secondary);
+            }
+          }
+
+          &.btn-danger {
+            background: var(--danger-color);
+            color: white;
+
+            &:hover:not(:disabled) {
+              opacity: 0.9;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-8px);
+  }
+
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+@keyframes unlockPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+}

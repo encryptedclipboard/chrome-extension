@@ -4,7 +4,7 @@
  */
 
 // VERSION of this extension
-export const VERSION = "5.4.0";
+export const VERSION = "5.4.1";
 
 export const SIDEBAR_ROOT_ELEMENT_ID =
   "encrypted-clipboard-manager-sidepanel-root-v1";

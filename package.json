@@ -1,6 +1,6 @@
 {
   "name": "@encryptedclipboard/chrome-extension",
-  "version": "5.4.0",
+  "version": "5.4.1",
   "private": false,
   "license": "PolyForm-Noncommercial-1.0.0",
   "description": "Browser extension for secure clipboard management with end-to-end encryption and cloud sync.",

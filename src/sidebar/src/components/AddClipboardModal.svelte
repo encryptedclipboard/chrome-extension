@@ -467,7 +467,7 @@
       flex: 1;
       padding: 8px 12px;
       border: 1px solid $border-dark;
-      border-radius: 12px;
+      border-radius: $radius;
       corner-shape: squircle;
       background: $card-dark;
       color: white;
@@ -514,7 +514,7 @@
     justify-content: space-between;
     background: $card-dark;
     border: 1px solid $border-dark;
-    border-radius: 12px;
+    border-radius: $radius;
     corner-shape: squircle;
     padding: 6px 12px;
     margin-bottom: 12px;
@@ -538,7 +538,7 @@
       display: flex;
       background: rgba(0, 0, 0, 0.2);
       padding: 3px;
-      border-radius: 12px;
+      border-radius: 18px;
       corner-shape: squircle;
       border: 1px solid $border-dark;
 
@@ -592,7 +592,7 @@
 
   .image-upload-zone {
     border: 2px dashed $border-dark;
-    border-radius: 12px;
+    border-radius: $radius;
     corner-shape: squircle;
     padding: 24px;
     text-align: center;
@@ -618,7 +618,7 @@
       max-width: 100%;
       max-height: 200px;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: $radius;
       corner-shape: squircle;
     }
 
@@ -633,7 +633,7 @@
       color: white;
       opacity: 0;
       transition: opacity 0.2s ease;
-      border-radius: 12px;
+      border-radius: $radius;
       corner-shape: squircle;
     }
 

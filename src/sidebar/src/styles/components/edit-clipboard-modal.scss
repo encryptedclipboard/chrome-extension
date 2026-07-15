@@ -20,7 +20,7 @@
     width: 90%;
     max-width: 600px;
     max-height: 90vh;
-    border-radius: 12px;
+    border-radius: $radius;
     corner-shape: squircle;
     box-shadow: none;
     display: flex;
@@ -238,7 +238,7 @@
         padding: 10px 12px;
         background: $input-dark;
         border: 1px solid rgb(255, 255, 255, 0.1);
-        border-radius: 12px;
+        border-radius: $radius;
         corner-shape: squircle;
         color: white;
         font-family: monospace;
@@ -408,7 +408,7 @@
   justify-content: space-between;
   background: $card-dark;
   border: 1px solid $border-dark;
-  border-radius: 12px;
+  border-radius: $radius;
   corner-shape: squircle;
   padding: 6px 12px;
   margin-bottom: 12px;
@@ -432,7 +432,7 @@
     display: flex;
     background: rgb(0, 0, 0, 0.2);
     padding: 3px;
-    border-radius: 12px;
+    border-radius: 18px;
     corner-shape: squircle;
     border: 1px solid $border-dark;
 

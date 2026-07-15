@@ -64,7 +64,7 @@
       width: 100%;
       background: var(--bg-secondary);
       border: 1px solid var(--border-color);
-      border-radius: 12px;
+      border-radius: $radius;
       corner-shape: squircle;
       padding: 8px 10px;
       outline: none;
@@ -230,7 +230,7 @@
         width: 100%;
         background: var(--bg-secondary);
         border: 1px solid var(--border-color);
-        border-radius: 12px;
+        border-radius: $radius;
         corner-shape: squircle;
         padding: 10px 48px 10px 10px;
         font-size: 13px;

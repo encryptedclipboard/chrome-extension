@@ -30,7 +30,7 @@
   /* Force dark theme - use hardcoded dark variables */
   background: #{$card-dark};
   border: 1px solid #{$border-dark};
-  border-radius: 12px;
+  border-radius: $radius;
   corner-shape: squircle;
   width: 90%;
   max-width: 420px;

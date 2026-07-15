@@ -2003,6 +2003,7 @@
     );
   }
 
+  let lastScrollTop = 0;
   let scrollSaveTimeout: number | undefined;
   let fabVisible = $state(true);
 
@@ -2012,7 +2013,9 @@
     }
 
     if (itemsListContainer) {
-      fabVisible = itemsListContainer.scrollTop < 50;
+      const st = itemsListContainer.scrollTop;
+      fabVisible = st < lastScrollTop || st < 50;
+      lastScrollTop = st;
     }
 
     scrollTimeout = setTimeout(() => {

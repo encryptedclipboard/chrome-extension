@@ -15,7 +15,7 @@
   .setup-container {
     background: #{$card-dark};
     border: 1px solid #{$border-dark};
-    border-radius: 12px;
+    border-radius: $radius;
     corner-shape: squircle;
     corner-shape: squircle;
     padding: 24px;

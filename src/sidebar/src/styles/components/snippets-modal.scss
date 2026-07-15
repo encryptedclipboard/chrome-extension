@@ -42,7 +42,7 @@
     padding: 8px 10px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: $radius;
     corner-shape: squircle;
     color: var(--text-primary);
     font-size: 13px;
@@ -84,7 +84,7 @@
     padding: 8px 10px;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border-radius: $radius;
     corner-shape: squircle;
     color: var(--text-primary);
     font-size: 13px;
@@ -95,7 +95,7 @@
 
 .code-editor-container {
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: $radius;
   corner-shape: squircle;
   overflow: hidden;
 }

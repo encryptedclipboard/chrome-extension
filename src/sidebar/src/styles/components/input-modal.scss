@@ -15,7 +15,7 @@
     width: 100%;
     padding: 8px 12px;
     border: 1px solid $border;
-    border-radius: 12px;
+    border-radius: $radius;
     corner-shape: squircle;
     background: $background;
     color: $foreground;

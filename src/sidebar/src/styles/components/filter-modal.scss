@@ -17,7 +17,7 @@
 
   .modal {
     background: $card-dark;
-    border-radius: 12px;
+    border-radius: $radius;
     corner-shape: squircle;
     width: 90%;
     max-width: 480px;
@@ -301,7 +301,7 @@
     input {
       background: $card-dark;
       border: 1px solid $border-dark;
-      border-radius: 12px;
+      border-radius: $radius;
       corner-shape: squircle;
       padding: 8px 10px;
       font-size: 13px;

@@ -12,7 +12,7 @@
   --accent: 142 88% 70%;
   --accent-foreground: 240 10% 4%;
   --border: 240 5% 18%;
-  --radius: 16px;
+  --radius: 28px;
   --glass: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.08);
   --glass-hover: rgba(255, 255, 255, 0.06);
@@ -68,7 +68,7 @@ body::before {
   background:
     radial-gradient(
       circle at 70% 30%,
-      hsla(var(--primary), 0.08) 0%,
+      hsl(var(--primary) / 0.08) 0%,
       transparent 40%
     ),
     radial-gradient(
@@ -97,7 +97,7 @@ header {
   padding: 1rem;
   background: var(--glass);
   border: 1px solid var(--glass-border);
-  border-radius: 24px;
+  border-radius: var(--radius);
   corner-shape: squircle;
   margin-bottom: 2.5rem;
   backdrop-filter: blur(12px);
@@ -107,7 +107,7 @@ header {
 .logo {
   height: 64px;
   width: auto;
-  filter: drop-shadow(0 0 30px hsla(var(--primary), 0.4));
+  filter: drop-shadow(0 0 30px hsl(var(--primary) / 0.4));
 }
 
 h1 {
@@ -143,9 +143,9 @@ h1 {
   font-size: 0.8rem;
   font-weight: 600;
   color: hsl(var(--primary));
-  background: hsla(var(--primary), 0.1);
-  border: 1px solid hsla(var(--primary), 0.2);
-  border-radius: 100px;
+  background: hsl(var(--primary) / 0.1);
+  border: 1px solid hsl(var(--primary) / 0.2);
+  border-radius: 12px;
   corner-shape: squircle;
   letter-spacing: 0.05em;
   animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
@@ -214,7 +214,7 @@ h1 {
 }
 
 .setup-card:hover {
-  border-color: hsla(var(--primary), 0.4);
+  border-color: hsl(var(--primary) / 0.4);
   background: var(--glass-hover);
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.5);
@@ -229,7 +229,7 @@ h1 {
   height: 100%;
   background: radial-gradient(
     circle at top left,
-    hsla(var(--primary), 0.1),
+    hsl(var(--primary) / 0.1),
     transparent 70%
   );
   opacity: 0;
@@ -359,7 +359,7 @@ code {
 
 .feature-item:hover {
   background: var(--glass-hover);
-  border-color: var(--glass-border);
+  border-color: hsl(var(--primary) / 0.4);
   transform: scale(1.01);
 }
 
@@ -369,7 +369,7 @@ code {
   justify-content: center;
   width: 48px;
   height: 48px;
-  background: hsla(var(--primary), 0.1);
+  background: hsl(var(--primary) / 0.1);
   border-radius: 12px;
   corner-shape: squircle;
   flex-shrink: 0;
@@ -400,9 +400,9 @@ code {
   font-size: 0.6rem;
   font-weight: 800;
   color: hsl(var(--primary));
-  background: hsla(var(--primary), 0.15);
+  background: hsl(var(--primary) / 0.15);
   padding: 0.15rem 0.5rem;
-  border-radius: 100px;
+  border-radius: 12px;
   corner-shape: squircle;
   letter-spacing: 0.08em;
   vertical-align: middle;
@@ -418,7 +418,7 @@ code {
     rgba(255, 255, 255, 0.02) 0%,
     rgba(255, 255, 255, 0.01) 100%
   );
-  border-radius: 32px;
+  border-radius: var(--radius);
   corner-shape: squircle;
   border: 1px solid var(--glass-border);
   margin-top: 8rem;
@@ -438,7 +438,7 @@ code {
   height: 100%;
   background: radial-gradient(
     circle at 50% 100%,
-    hsla(var(--primary), 0.1),
+    hsl(var(--primary) / 0.1),
     transparent 60%
   );
   pointer-events: none;
@@ -468,7 +468,7 @@ code {
 
 .btn {
   padding: 1.15rem 2.5rem;
-  border-radius: 100px;
+  border-radius: var(--radius);
   corner-shape: squircle;
   font-weight: 700;
   font-size: 1.1rem;
@@ -482,24 +482,24 @@ code {
 .btn-primary {
   background-color: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
-  box-shadow: 0 10px 40px -10px hsla(var(--primary), 0.4);
+  box-shadow: 0 10px 40px -10px hsl(var(--primary) / 0.4);
 }
 
 .btn-primary:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 60px -15px hsla(var(--primary), 0.5);
+  box-shadow: 0 20px 60px -15px hsl(var(--primary) / 0.5);
   background-color: hsl(var(--accent));
 }
 
 .btn-outline {
-  background-color: transparent;
-  border: 1px solid var(--border);
+  background-color: hsla(var(--secondary));
+  border: 1px solid var(--glass-border);
   color: #fff;
 }
 
 .btn-outline:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: #fff;
+  background-color: hsl(var(--muted));
+  border-color: hsl(var(--primary) / 0.4);
   transform: translateY(-2px);
 }
 
